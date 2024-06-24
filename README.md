@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="/url">
-    <img src="./assets/goson-logo.png" alt="Goson-Logo" height="200">
+    <img src="./assets/libmaster-logo.png" alt="LibMaster-Logo" height="200">
   </a>
 
 <h3 align="center">LibMaster</h3>
@@ -11,11 +11,11 @@
     <br />
     <br />
     <a href="/url">View Demo</a>
-    ✲
+    ✱
     <a href="https://github.com/openceJav/libmaster/issues">Report Bug</a>
-    ✲
+    ✱
     <a href="https://github.com/openceJav/libmaster/issues">Request Feature</a>
-    ✲
+    ✱
     <a href="/url">Documentation</a>
   </p>
 </div>
@@ -42,8 +42,7 @@
     <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React">
     <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS">
     <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white" alt="Spring"> 
-    <img src="https://img.shields.io/badge/-Java-%23ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java">
-
+    <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
 </div>
 <br />
 
