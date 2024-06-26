@@ -1,4 +1,4 @@
-# Lib Master API\
+# Lib Master API
 
 > [WARNING] 
 > The API is currently still under development and is not yet ready for production use, 
