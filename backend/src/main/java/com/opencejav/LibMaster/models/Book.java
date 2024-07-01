@@ -20,7 +20,6 @@ import java.util.UUID;
 public class Book implements Serializable {
     @Id
     private UUID bookId;
-    @Id
     private String bookISBN;
     private String bookTitle;
     private List<Author> bookAuthors;

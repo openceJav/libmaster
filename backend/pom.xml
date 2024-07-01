@@ -155,14 +155,6 @@
 			<artifactId>jasypt-spring-boot-starter</artifactId>
 			<version>3.0.5</version>
 		</dependency>
-
-		<!-- Jasypt Maven Plugin -->
-		<!-- https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-maven-plugin -->
-		<dependency>
-			<groupId>com.github.ulisesbocchio</groupId>
-			<artifactId>jasypt-maven-plugin</artifactId>
-			<version>3.0.5</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -211,6 +203,14 @@
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>3.0.5</version>
 			</plugin>
+
+			<!-- Jasypt Maven Plugin -->
+			<!-- https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-maven-plugin -->
+			<plugin>
+				<groupId>com.github.ulisesbocchio</groupId>
+				<artifactId>jasypt-maven-plugin</artifactId>
+				<version>3.0.5</version>
+			</plugin>
 		</plugins>
 	</build>
 	<repositories>
@@ -220,5 +220,4 @@
 			<url>https://repo.maven.apache.org/maven2/</url>
 		</repository>
 	</repositories>
-
 </project>

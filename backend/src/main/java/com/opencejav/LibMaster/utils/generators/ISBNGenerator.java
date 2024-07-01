@@ -47,7 +47,6 @@ public class ISBNGenerator {
     public static String generatePartialISBN(String geoCode, String publisherCode, int titleCode) {
         // TODO: Validate ISBN Parameters Before Generating ISBN.
 
-
         StringBuilder sb = new StringBuilder();
         sb.append(geoCode);
         sb.append(publisherCode);
