@@ -57,7 +57,13 @@ class ISBNGenerator {
         // Private Constructor to Prevent Instantiation.
     }
     
-    private 
+    private static String generateISBN13() {
+        // ...
+    }
+    
+    private static String validateISBN13(String isbn) {
+        // ...
+    }
 }
 
 ```
@@ -90,3 +96,10 @@ own library management system using the ISBN-13 standard.
 ## References
 
 - [ISBN-13](https://en.wikipedia.org/wiki/International_Standard_Book_Number)
+
+
+> [WARNING]
+> ISBN-10 or ISBN13 are NOT ABLE TO BE GENERATED RANDOMLY. This is because ISBNs are 
+> official issuance by International ISBN Agencies. However, we can always consider
+> speaking with the agency to get ISBNs for any book we may need, which will require
+> a fee to be paid or the agency.
