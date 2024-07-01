@@ -1,3 +1,0 @@
-mvn jasypt:encrypt-value -Djasypt.encryptor.password="XXXXXX" -Djasypt.plugin.value="XXXXXX"
-
-where XXXXXX is the key you want to set for the encryption.
