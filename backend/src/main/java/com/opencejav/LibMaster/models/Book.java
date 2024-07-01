@@ -1,6 +1,7 @@
 package com.opencejav.LibMaster.models;
 
 // Records Imported from records package
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.opencejav.LibMaster.models.records.Author;
 import com.opencejav.LibMaster.models.records.Category;
 import com.opencejav.LibMaster.models.records.Publisher;
@@ -17,6 +18,7 @@ import java.util.UUID;
 
 @ToString
 @Document("Books")
+@JsonPropertyOrder({"bookId", "bookISBN", "bookTitle", "bookAuthors", "bookPublisher", "bookCategory", "bookQuantity", "CreatedAt", "ModifiedAt"})
 public class Book implements Serializable {
     @Id
     private UUID bookId;
@@ -61,6 +63,15 @@ public class Book implements Serializable {
             return this;
         }
 
+        public BookBuilder withBookTitle(String bookTitle){
+            this.bookTitle = bookTitle;
+            return this;
+        }
 
+        public BookBuilder withBookAuthors(List<Author> bookAuthors) {
+            this.bookAuthors = bookAuthors;
+            return this;
+        }
+        
     }
 }
