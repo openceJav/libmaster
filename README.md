@@ -86,7 +86,7 @@
 
 ## Contributing
 
-// TODO
+![LibMaster RepoBeat](https://repobeats.axiom.co/api/embed/f8f939740ab62fc38ff26e47084664b994cc32f3.svg "LibMaster RepoBeat Metrics")
 
 ## License
 
