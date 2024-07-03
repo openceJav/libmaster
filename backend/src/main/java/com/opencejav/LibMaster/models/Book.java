@@ -21,7 +21,7 @@ import java.util.UUID;
 @JsonPropertyOrder({"bookId", "bookISBN", "bookTitle", "bookAuthors", "bookPublisher", "bookCategory", "bookQuantity", "CreatedAt", "ModifiedAt"})
 public class Book implements Serializable {
     @Id
-    private UUID bookId;
+    private long bookId;
     private String bookISBN;
     private String bookTitle;
     private List<Author> bookAuthors;
@@ -34,13 +34,13 @@ public class Book implements Serializable {
     public static class BookBuilder {
         //region DEFAULTS
         private static final int DEFAULT_QUANTITY = 1;
-        private static final UUID DEFAULT_ID = UUID.randomUUID();
+        private static final long DEFAULT_ID = 000000;
         private static final String DEFAULT_ISBN = "0000000000000";
         private static final Date DEFAULT_CREATED_DATE = Date.from(Instant.now());
         private static final Date DEFAULT_MODIFIED_DATE = Date.from(Instant.now());
         //endregion
 
-        private UUID bookId;
+        private long bookId;
         private String bookISBN;
         private String bookTitle;
         private List<Author> bookAuthors;
