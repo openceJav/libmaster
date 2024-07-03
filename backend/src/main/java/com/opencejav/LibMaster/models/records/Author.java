@@ -1,11 +1,11 @@
 package com.opencejav.LibMaster.models.records;
 
-import lombok.NonNull;
+public class Author{
+    private String name;
 
-public record Author(
-        long authorId,
-        @NonNull String authorName,
-        @NonNull String authorEmail,
-        @NonNull String authorPhone ) {
+    public Author(String name) {
+        this.name = name;
+    }
+
     // TODO: Implement Author Record Logic
 }

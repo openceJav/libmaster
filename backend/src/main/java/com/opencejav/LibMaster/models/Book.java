@@ -40,6 +40,7 @@ public class Book implements Serializable {
         this.bookQuantity = builder.bookQuantity;
     }
 
+
     public static class BookBuilder {
         //region DEFAULTS
         private static final int DEFAULT_QUANTITY = 1;

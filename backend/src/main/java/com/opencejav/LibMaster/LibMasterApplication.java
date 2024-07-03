@@ -15,5 +15,6 @@ public class LibMasterApplication {
 		Logger.info("LibMasterApplication Started Successfully, Server on http://localhost:8080/");
 		Logger.info("LibMasterApplication Swagger UI on http://localhost:8080/swagger-ui.html");
 		Logger.info("LibMasterApplication Live Reload Server on http://localhost:35729/");
+    System.out.println("LibMasterApplication Started Successfully, Server on http://localhost:35729/");
 	}
 }

@@ -1,10 +1,10 @@
 package com.opencejav.LibMaster.models.records;
 
-import lombok.NonNull;
-
-public record Category(
-        long categoryId,
-        @NonNull String categoryName,
-        @NonNull String categoryDescription) {
+public class Category {
     // TODO: Implement Category Record Logic
+    private String type;
+
+    public Category(String type) {
+        this.type = type;
+    }
 }
