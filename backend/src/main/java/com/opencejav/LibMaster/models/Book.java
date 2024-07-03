@@ -6,23 +6,23 @@ import com.opencejav.LibMaster.models.records.Author;
 import com.opencejav.LibMaster.models.records.Category;
 import com.opencejav.LibMaster.models.records.Publisher;
 
-import com.opencejav.LibMaster.utils.validation.Rule;
-import com.opencejav.LibMaster.utils.validation.Validator;
+
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 
-@Getter
-@ToString
 @Document("Books")
+@Data
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
 @JsonPropertyOrder({"bookId", "bookISBN", "bookTitle", "bookAuthors", "bookPublisher", "bookCategory", "bookQuantity", "CreatedAt", "ModifiedAt"})
 public class Book implements Serializable {
     @Id
-    private UUID bookId;
+    private long bookId;
     private final String bookISBN;
     private final String bookTitle;
     private final List<Author> bookAuthors;
@@ -43,11 +43,11 @@ public class Book implements Serializable {
     public static class BookBuilder {
         //region DEFAULTS
         private static final int DEFAULT_QUANTITY = 1;
-        private static final UUID DEFAULT_ID = UUID.randomUUID();
+        private static final long DEFAULT_ID = 0000000;
         private static final String DEFAULT_ISBN = "0000000000000";
         //endregion
 
-        private final UUID bookId;
+        private final long bookId;
         private String bookISBN;
         private String bookTitle;
         private List<Author> bookAuthors;
