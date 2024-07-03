@@ -1,6 +1,6 @@
 package com.opencejav.LibMaster.models.records;
 
-import com.mongodb.lang.NonNull;
+import lombok.NonNull;
 
 public class Publisher {
     // TODO: Implement Publisher Record Logic

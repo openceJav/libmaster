@@ -1,4 +1,5 @@
 mvn jasypt:encrypt-value -Djasypt.encryptor.password="X0X0" -Djasypt.plugin.value="X0X0"
+mvn jasypt:encrypt -Djasypt.encryptor.password="X0X0"
 
 
 NOTE: encryptor.password is your Secret Key and plugin.value is your value you want to encrypt.

@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="/url">
-    <img src="./assets/libmaster-logo.png" alt="LibMaster-Logo" height="200">
+    <img src="./assets/LibMaster Textual Logo.png" alt="LibMaster-Logo" height="200">
   </a>
 
 <h3 align="center">LibMaster</h3>
