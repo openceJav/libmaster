@@ -1,3 +1,5 @@
 package com.opencejav.LibMaster.service;
 
-public interface BaseService<T> { }
+public interface BaseService<T> {
+    // TODO: Implement BaseService Interface
+}

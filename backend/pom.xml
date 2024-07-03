@@ -12,7 +12,11 @@
 	<artifactId>LibMaster</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>LibMaster</name>
-	<description>Demo project for Spring Boot</description>
+	<description>
+		LibMaster is a comprehensive solution for managing library resources,
+		patrons, and operations. Features include catalog management,
+		circulation tracking, user accounts, and reporting tools.
+	</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -30,20 +34,15 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-rest</artifactId>-->
-<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -67,6 +66,7 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- Dependency for Docker-Compose -->
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.boot</groupId>-->
 <!--			<artifactId>spring-boot-docker-compose</artifactId>-->
@@ -134,7 +134,7 @@
 			<version>3.0.0</version>
 		</dependency>
 
-		<!-- Dependency for TinyLog Logging Lib -->
+		<!-- Dependency for TinyLog Logging -->
 		<dependency>
 			<groupId>org.tinylog</groupId>
 			<artifactId>tinylog-api</artifactId>
