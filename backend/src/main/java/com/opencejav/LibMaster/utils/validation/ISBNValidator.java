@@ -9,7 +9,6 @@ public class ISBNValidator {
     public static final String ISBN_13_10_COMPLIANT_REGEX_ALT = "(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})";
     //endregion
 
-
     private ISBNValidator() {
         // Private to Prevent Instantiation
     }
