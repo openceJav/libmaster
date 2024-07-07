@@ -1,7 +1,10 @@
 package com.opencejav.LibMaster.utils.generators;
 
+import com.opencejav.LibMaster.annotations.Base;
+
 import java.util.Random;
 
+@Base(className = "BaseIdGenerator")
 public interface BaseIdGenerator<T> {
     T generate();
     T generate(final Random random, final int size);
