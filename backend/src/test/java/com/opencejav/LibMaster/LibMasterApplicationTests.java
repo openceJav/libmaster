@@ -8,6 +8,6 @@ class LibMasterApplicationTests {
 
 	@Test
 	void contextLoads() {
-	}
 
+	}
 }

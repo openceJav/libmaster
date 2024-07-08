@@ -7,8 +7,7 @@ import java.util.function.Function;
 public class PositiveIntegerRule<T> extends CheckIntegerRule<T> {
     public PositiveIntegerRule(
             @NonNull String fieldName,
-            @NonNull Function<T, Integer> fieldExtractor
-    ) {
+            @NonNull Function<T, Integer> fieldExtractor) {
         super(fieldName, fieldExtractor);
     }
 

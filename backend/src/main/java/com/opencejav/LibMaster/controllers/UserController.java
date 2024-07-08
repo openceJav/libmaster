@@ -40,3 +40,4 @@ public class UserController {
         return new Response("Deleted successfully!", "Confirmation.");
     }
 }
+}

@@ -1,4 +1,4 @@
-package com.opencejav.LibMaster.repositories;
+package com.opencejav.LibMaster.repository;
 
 import org.springframework.data.mongodb.repository.*;
 import com.opencejav.LibMaster.models.User;

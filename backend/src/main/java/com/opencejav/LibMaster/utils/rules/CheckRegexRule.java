@@ -6,33 +6,33 @@ import lombok.Getter;
 import lombok.NonNull;
 
 import java.util.function.Function;
+import java.util.regex.Pattern;
 
 @Getter
 @SuppressWarnings("all") // TODO: Remove this suppression (for javadoc later)
-public class CheckStringRule<T> implements Rule<T> {
+public class CheckRegexRule<T> implements Rule<T> {
     private final String fieldName;
     private final Function<T, String> fieldExtractor;
+    private final Pattern regexPattern;
 
-
-    public CheckStringRule(
+    public CheckRegexRule(
             @NonNull final String fieldName,
-            final Function<T, String> fieldExtractor) {
+            final Function<T, String> fieldExtractor,
+            final Pattern regexPattern) {
         this.fieldName = fieldName;
         this.fieldExtractor = fieldExtractor;
+        this.regexPattern = regexPattern;
     }
 
     @Override
     public boolean validate(T obj) {
-        if (obj instanceof String) {
-            return this.fieldExtractor.apply(obj) != null && !this.fieldExtractor.apply(obj).isEmpty();
-        }
-
-        return false;
+        String fieldValue = fieldExtractor.apply(obj);
+        return fieldValue != null && regexPattern.matcher(fieldValue).matches();
     }
 
     @Override
     public String message() {
-        return String.format("The Field '%s' is either provided as empty or is null.", this.fieldName);
+        return String.format("Field '%s' does not match the expected regex format.", this.fieldName);
     }
 
     @Override

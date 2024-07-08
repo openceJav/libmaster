@@ -1,47 +1,51 @@
 package com.opencejav.LibMaster.controllers;
 
-import com.opencejav.LibMaster.repositories.*;
-import com.opencejav.LibMaster.tools.*;
+import com.opencejav.LibMaster.repository.BookRepository;
 
+import com.opencejav.LibMaster.utils.Response;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.opencejav.LibMaster.models.*;
+
+import java.math.BigInteger;
 import java.util.*;
 
 @RestController
+@RequestMapping("/v1/api")
 public class BookController {
 	@Autowired
-	private BookRepository repo;
-	
-	private Optional<Book> dummyOptional;
+	private BookRepository bookRepository;
+	private Optional<Book> optionalBook; // Dummy Optional
 	
 	@GetMapping("/book/welcome")
 	public Object welcome() {
-		return new Response("Welcome!", "Welcome!");
+		return new Response("Welcome!", "INFO");
 	}
 	
-	@GetMapping("/book")
-	public Object find(@RequestParam String bookId) {
-		return repo.findById((UUID.fromString(bookId)));
+	@GetMapping("/book/find")
+	public Object find(
+			@RequestParam BigInteger bookId) {
+		return bookRepository.findById(bookId.intValue());
 	}
 	
 	@PutMapping("/book")
 	public Object update(@RequestBody Book book) {
-		//Might use a Credentials class.
-		return repo.save(book);
+		return bookRepository.save(book); // TODO: Consider using Credentials Class
 	}
 	
 	@PostMapping("/book")
 	public Object upload(@RequestBody Book book) {
-		return repo.save(book);
+		return bookRepository.save(book);
 	}
 
 	@DeleteMapping("/book")
-	public Object delete(@RequestBody String bookId) {
-		repo.deleteById(UUID.fromString(bookId));
-		if (repo.findById(UUID.fromString(bookId)).isEmpty() == false) {
-			return new Response("Deletion Unsuccessful. Please try again.", "Confirmation");
+	public Object delete(@RequestBody @NonNull BigInteger bookId) {
+		if (bookRepository.findById(bookId.intValue()).isPresent()) {
+			return new Response("Deletion Unsuccessful, Try Again.", "Confirmation");
 		}
+
+		bookRepository.deleteById(bookId.intValue());
 		return new Response("Deletion Successful", "Confirmation");
 	}
 }

@@ -38,7 +38,7 @@ public class Validator<T> implements Validatable<T> {
     }
 
     @Override
-    public boolean validate(T obj) {
+    public boolean validate() {
         return exceptionsList.isEmpty();
     }
 
