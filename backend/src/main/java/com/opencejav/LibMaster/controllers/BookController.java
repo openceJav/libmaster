@@ -18,7 +18,7 @@ public class BookController {
 	private BookRepository bookRepository;
 	private Optional<Book> optionalBook; // Dummy Optional
 	
-	@GetMapping("/book")
+	@GetMapping("/book/welcome")
 	public Object welcome() {
 		return new Response("Welcome!", "INFO");
 	}
@@ -29,17 +29,17 @@ public class BookController {
 		return bookRepository.findById(bookId.intValue());
 	}
 	
-	@PutMapping("/book/update")
+	@PutMapping("/book")
 	public Object update(@RequestBody Book book) {
 		return bookRepository.save(book); // TODO: Consider using Credentials Class
 	}
 	
-	@PostMapping("/book/add")
+	@PostMapping("/book")
 	public Object upload(@RequestBody Book book) {
 		return bookRepository.save(book);
 	}
 
-	@DeleteMapping("/book/delete")
+	@DeleteMapping("/book")
 	public Object delete(@RequestBody @NonNull BigInteger bookId) {
 		if (bookRepository.findById(bookId.intValue()).isPresent()) {
 			return new Response("Deletion Unsuccessful, Try Again.", "Confirmation");

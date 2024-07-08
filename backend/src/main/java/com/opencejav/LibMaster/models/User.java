@@ -52,7 +52,7 @@ public class User {
 		this.userPhone = builder.userPhone;
 		this.userAddress = builder.userAddress;
 		this.lastLogin = builder.lastLogin;
-	}
+}
 
 	private static class UserBuilder {
 		//region DEFAULT(S)
