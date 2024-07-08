@@ -20,7 +20,7 @@ public class BookController {
 	
 	@GetMapping("/book")
 	public Object welcome() {
-		return new Response("Welcome!", "Welcome!");
+		return new Response("Welcome!", "INFO");
 	}
 	
 	@GetMapping("/book/find")

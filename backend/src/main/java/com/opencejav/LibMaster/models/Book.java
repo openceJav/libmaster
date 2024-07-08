@@ -12,7 +12,11 @@ import com.opencejav.LibMaster.utils.rules.CheckStringRule;
 import com.opencejav.LibMaster.utils.validation.Validator;
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -22,7 +26,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-@Document(collection = "libm_books")
+@Document(collection = "books")
 @JsonPropertyOrder({"book_id", "book_isbn", "book_title", "book_authors", "book_publisher", "book_category", "book_quantity"})
 public class Book implements Serializable {
     @Id
