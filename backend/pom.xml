@@ -12,7 +12,11 @@
 	<artifactId>LibMaster</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>LibMaster</name>
-	<description>Demo project for Spring Boot</description>
+	<description>
+		LibMaster is a comprehensive solution for managing library resources,
+		patrons, and operations. Features include catalog management,
+		circulation tracking, user accounts, and reporting tools.
+	</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -30,11 +34,6 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -67,6 +66,7 @@
 			<optional>true</optional>
 		</dependency>
 
+<!-- Dependency for Docker-Compose -->
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.boot</groupId>-->
 <!--			<artifactId>spring-boot-docker-compose</artifactId>-->
@@ -92,6 +92,13 @@
 <!--			<scope>test</scope>-->
 <!--		</dependency>-->
 
+		<!-- Dependency for Guava Core -->
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>33.2.1-jre</version>
+		</dependency>
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.security</groupId>-->
 <!--			<artifactId>spring-security-test</artifactId>-->
@@ -114,6 +121,14 @@
 <!--			<version>2.17.1</version>-->
 <!--		</dependency>-->
 
+		<!-- Dependency for Swagger UI-->
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+
 <!--		&lt;!&ndash; Dependency for Swagger Annotations &ndash;&gt;-->
 <!--		&lt;!&ndash; https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 &ndash;&gt;-->
 <!--		<dependency>-->
@@ -134,7 +149,7 @@
 <!--			<version>3.0.0</version>-->
 <!--		</dependency>-->
 
-		<!-- Dependency for TinyLog Logging Lib -->
+		<!-- Dependency for TinyLog Logging -->
 		<dependency>
 			<groupId>org.tinylog</groupId>
 			<artifactId>tinylog-api</artifactId>
