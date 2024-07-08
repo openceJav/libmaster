@@ -26,7 +26,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-@Document(collection = "books")
+@Document(collection = "Books")
 @JsonPropertyOrder({"book_id", "book_isbn", "book_title", "book_authors", "book_publisher", "book_category", "book_quantity"})
 public class Book implements Serializable {
     @Id

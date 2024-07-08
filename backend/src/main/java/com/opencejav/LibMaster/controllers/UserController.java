@@ -1,12 +1,13 @@
 package com.opencejav.LibMaster.controllers;
 
 import com.opencejav.LibMaster.models.User;
-import com.opencejav.LibMaster.repositories.UserRepository;
-import com.opencejav.LibMaster.tools.Response;
+import com.opencejav.LibMaster.repository.UserRepository;
+import com.opencejav.LibMaster.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/v1/api")
 public class UserController {
     @Autowired
     private UserRepository repo;
@@ -39,5 +40,4 @@ public class UserController {
         repo.delete(user);
         return new Response("Deleted successfully!", "Confirmation.");
     }
-}
 }

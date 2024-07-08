@@ -1,5 +1,6 @@
 package com.opencejav.LibMaster.models;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.opencejav.LibMaster.enums.UserType;
 import com.opencejav.LibMaster.utils.generators.IntegerIdGenerator;
 import lombok.EqualsAndHashCode;
@@ -13,11 +14,12 @@ import java.math.BigInteger;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-@Document(collection = "libm_users")
+@Document(collection = "Users")
 @NoArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode
+@JsonPropertyOrder({"user_id", "user_type", "user_name", "book_authors", "book_publisher", "book_category", "book_quantity"})
 public class User {
 	@Id
 	private BigInteger userId;
