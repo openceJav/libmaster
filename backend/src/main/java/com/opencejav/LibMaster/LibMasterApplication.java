@@ -11,7 +11,6 @@ import org.tinylog.Logger;
 @SpringBootApplication
 @EnableEncryptableProperties
 public class LibMasterApplication {
-
 	public static void main(String[] args) {
 		Logger.info("LibMasterApplication Started Successfully, Server on http://localhost:8080/");
 		Logger.info("LibMasterApplication Live Reload Server on http://localhost:35729/");

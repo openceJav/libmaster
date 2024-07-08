@@ -15,28 +15,28 @@ public class BookController {
 	
 	private Optional<Book> dummyOptional;
 	
-	@GetMapping("/book")
+	@GetMapping("/book/welcome")
 	public Object welcome() {
 		return new Response("Welcome!", "Welcome!");
 	}
 	
-	@GetMapping("/book/find")
+	@GetMapping("/book")
 	public Object find(@RequestParam String bookId) {
 		return repo.findById((UUID.fromString(bookId)));
 	}
 	
-	@PutMapping("/book/update")
+	@PutMapping("/book")
 	public Object update(@RequestBody Book book) {
 		//Might use a Credentials class.
 		return repo.save(book);
 	}
 	
-	@PostMapping("/book/upload")
+	@PostMapping("/book")
 	public Object upload(@RequestBody Book book) {
 		return repo.save(book);
 	}
 
-	@DeleteMapping("/book/delete")
+	@DeleteMapping("/book")
 	public Object delete(@RequestBody String bookId) {
 		repo.deleteById(UUID.fromString(bookId));
 		if (repo.findById(UUID.fromString(bookId)).isEmpty() == false) {
