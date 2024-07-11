@@ -3,8 +3,10 @@ package com.opencejav.LibMaster.controllers;
 import com.opencejav.LibMaster.repository.BookRepository;
 
 import com.opencejav.LibMaster.utils.Response;
+import com.opencejav.LibMaster.utils.ResponseContent;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.opencejav.LibMaster.models.*;
 
@@ -19,8 +21,8 @@ public class BookController {
 	private Optional<Book> optionalBook; // Dummy Optional
 	
 	@GetMapping("/book/welcome")
-	public Object welcome() {
-		return new Response("Welcome!", "INFO");
+	public ResponseEntity<?> welcome() {
+		return ResponseEntity.ok(new ResponseContent("Welcome!", "RESPONSE_TYPE: INFO"));
 	}
 	
 	@GetMapping("/book/find")
@@ -39,13 +41,14 @@ public class BookController {
 		return bookRepository.save(book);
 	}
 
+	// TODO: Change to ResponseEntity<?>
 	@DeleteMapping("/book")
 	public Object delete(@RequestBody @NonNull BigInteger bookId) {
 		if (bookRepository.findById(bookId.intValue()).isPresent()) {
-			return new Response("Deletion Unsuccessful, Try Again.", "Confirmation");
+			return new ResponseContent("Deletion Unsuccessful, Try Again.", "Confirmation");
 		}
 
 		bookRepository.deleteById(bookId.intValue());
-		return new Response("Deletion Successful", "Confirmation");
+		return new ResponseContent("Deletion Successful", "Confirmation");
 	}
 }

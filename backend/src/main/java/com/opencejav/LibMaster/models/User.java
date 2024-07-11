@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.math.BigInteger;
 import java.time.OffsetDateTime;
@@ -19,30 +22,62 @@ import java.util.UUID;
 @Getter
 @ToString
 @EqualsAndHashCode
-@JsonPropertyOrder({"user_id", "user_type", "user_name", "book_authors", "book_publisher", "book_category", "book_quantity"})
+@JsonPropertyOrder({
+		"user_id", "user_type",
+		"user_name", "user_password",
+		"user_email", "user_phone",
+		"user_address", "last_login",
+
+		// Auditing Fields
+		"created_on", "last_modified",
+		"created_by", "last_modified_by",
+		"version"})
 public class User {
 	@Id
+	@MongoId(targetType = FieldType.INT64)
 	private BigInteger userId;
+
+	@Field(targetType = FieldType.STRING)
 	private UserType userType;
+
+	@Field(targetType = FieldType.STRING)
 	private String userName;
+
+	@Field(targetType = FieldType.STRING)
 	private String userPassword;
+
+	@Field(targetType = FieldType.STRING)
 	private String userEmail;
+
+	@Field(targetType = FieldType.STRING)
 	private String userPhone;
+
+	@Field(targetType = FieldType.STRING)
 	private String userAddress;
+
+	@Field(targetType = FieldType.DATE_TIME)
 	private OffsetDateTime lastLogin;
 
 	//region Auditing Fields
 	@CreatedDate
+	@Field(targetType = FieldType.DATE_TIME)
 	private OffsetDateTime createdOn;
+
 	@LastModifiedDate
+	@Field(targetType = FieldType.DATE_TIME)
 	private OffsetDateTime lastModified;
+
 	@CreatedBy
+	@Field(targetType = FieldType.OBJECT_ID)
 	private UUID createdBy;
+
 	@LastModifiedBy
+	@Field(targetType = FieldType.OBJECT_ID)
 	private UUID lastModifiedBy;
 	//endregion
 
 	@Version
+	@Field(targetType = FieldType.INT32)
 	private Integer version;
 
 	private User(UserBuilder builder) {
@@ -59,7 +94,6 @@ public class User {
 	private static class UserBuilder {
 		//region DEFAULT(S)
 		private static final BigInteger GENERATED_USER_ID = IntegerIdGenerator.getInstance().generateBigInteger();
-		private static final BigInteger DEFAULT_USER_ID = BigInteger.ZERO;
 		private static final UserType DEFAULT_USER_TYPE = UserType.USER;
 		private static final String DEFAULT_USER_NAME = "SET NAME";
 		private static final String DEFAULT_USER_PASSWORD = "SET PASSWORD";
@@ -122,6 +156,7 @@ public class User {
 
 		public User build() {
 			// TODO: Add Validation Logic
+
 			return new User(this);
 		}
 	}

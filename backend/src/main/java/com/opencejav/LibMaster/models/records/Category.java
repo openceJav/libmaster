@@ -1,10 +1,24 @@
 package com.opencejav.LibMaster.models.records;
 
-public class Category {
-    // TODO: Implement Category Record Logic
-    private String type;
+import com.opencejav.LibMaster.enums.CategoryType;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 
-    public Category(String type) {
-        this.type = type;
-    }
+import java.math.BigInteger;
+
+public record Category(
+    @Id
+    BigInteger categoryId,
+
+    @NotNull
+    @Field(targetType = FieldType.STRING)
+    String categoryName,
+
+    @NotNull
+    @Field(targetType = FieldType.STRING)
+    CategoryType categoryType
+) {
+
 }
