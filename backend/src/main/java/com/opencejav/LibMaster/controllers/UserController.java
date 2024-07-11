@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/v1/api")
 public class UserController {
 
-
     @Autowired
-    private UserRepository repo;
+    private UserRepository userRepository;
 
     @GetMapping("user/welcome")
     public ResponseEntity<?> welcome() {
@@ -22,28 +21,28 @@ public class UserController {
 
     @GetMapping("user")
     public ResponseEntity<?> find(@RequestBody String username) {
-        System.out.println(repo.findById(username));
-        return ResponseEntity.ok(new ResponseContent("Success!", "Confirmation"));
+        userRepository.findAll();
+        return ResponseEntity.ok(new ResponseContent("Success!", "RESPONSE_TYPE: CONFIRMATION"));
     }
 
     // TODO: Implement ResponseEntity<?>
     @PutMapping("user")
     public Object update(@RequestBody User user) {
-        System.out.println(repo.save(user));
-        return new ResponseContent("Success!", "Confirmation");
+        userRepository.save(user);
+        return ResponseEntity.ok(new ResponseContent("Updated successfully!", "RESPONSE_TYPE: CONFIRMATION"));
     }
 
     // TODO: Implement ResponseEntity<?>
     @PostMapping("user")
     public Object create(@RequestBody User user) {
-        System.out.println(repo.save(user));
-        return new ResponseContent("Success!", "Confirmation");
+        userRepository.save(user);
+        return ResponseEntity.ok(new ResponseContent("Success!", "RESPONSE_TYPE: CONFIRMATION"));
     }
 
     // TODO: Implement ResponseEntity<?>
     @DeleteMapping("user")
     public Object delete(@RequestBody User user) {
-        repo.delete(user);
-        return new ResponseContent("Deleted successfully!", "Confirmation.");
+        userRepository.delete(user);
+        return ResponseEntity.ok(new ResponseContent("Deleted successfully!", "RESPONSE_TYPE: CONFIRMATION"));
     }
 }
