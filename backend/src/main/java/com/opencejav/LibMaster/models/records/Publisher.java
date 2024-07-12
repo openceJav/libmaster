@@ -12,10 +12,11 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.math.BigInteger;
 
-@Document(collection = "Authors")
+@Document(collection = "Publishers")
 @JsonPropertyOrder({
-        "author_id", "author_name",
-        "author_email", "author_address",
+        "publisher_id", "publisher_name",
+        "publisher_address", "publisher_city",
+        "publisher_state", "publisher_country",
 
         // Auditing Fields
         "created_on", "last_modified",

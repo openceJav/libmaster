@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.math.BigInteger;
 
-@Document(collection = "Authors")
+@Document(collection = "Categories")
 @JsonPropertyOrder({
         "category_id", "category_name",
         "category_type",
