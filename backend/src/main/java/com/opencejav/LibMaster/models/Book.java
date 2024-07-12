@@ -1,6 +1,8 @@
 package com.opencejav.LibMaster.models;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.opencejav.LibMaster.models.records.Author;
 import com.opencejav.LibMaster.models.records.Category;
 import com.opencejav.LibMaster.models.records.Publisher;
@@ -34,6 +36,7 @@ import java.util.UUID;
         "created_by", "last_modified_by",
         "version"
 })
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Book implements Serializable {
     @Id
     @MongoId(targetType = FieldType.INT64)

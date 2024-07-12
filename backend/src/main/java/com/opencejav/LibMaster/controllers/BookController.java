@@ -2,7 +2,6 @@ package com.opencejav.LibMaster.controllers;
 
 import com.opencejav.LibMaster.repository.BookRepository;
 
-import com.opencejav.LibMaster.utils.Response;
 import com.opencejav.LibMaster.utils.ResponseContent;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,34 +20,47 @@ public class BookController {
 	private Optional<Book> optionalBook; // Dummy Optional
 	
 	@GetMapping("/book/welcome")
-	public ResponseEntity<?> welcome() {
-		return ResponseEntity.ok(new ResponseContent("Welcome!", "RESPONSE_TYPE: INFO"));
+	public ResponseEntity<?> baseRoute() {
+		return ResponseEntity
+				.ok()
+				.body(new ResponseContent("Welcome!", "RESPONSE_TYPE: INFO"));
 	}
 	
 	@GetMapping("/book/find")
-	public Object find(
-			@RequestParam BigInteger bookId) {
-		return bookRepository.findById(bookId.intValue());
+	public ResponseEntity<?> findBook(@RequestParam BigInteger bookId) {
+		return ResponseEntity
+				.ok()
+				.body(bookRepository.findById(bookId.intValue()));
 	}
 	
 	@PutMapping("/book")
-	public Object update(@RequestBody Book book) {
-		return bookRepository.save(book); // TODO: Consider using Credentials Class
+	public ResponseEntity<?> updateBook(@RequestBody Book book) {
+		bookRepository.save(book); // TODO: Consider using Credentials Class
+
+		return ResponseEntity
+				.ok()
+				.body(new ResponseContent("Updated successfully!", "RESPONSE_TYPE: CONFIRMATION"));
 	}
 	
 	@PostMapping("/book")
-	public Object upload(@RequestBody Book book) {
-		return bookRepository.save(book);
+	public ResponseEntity<?> uploadBook(@RequestBody Book book) {
+		bookRepository.save(book);
+
+		return ResponseEntity
+				.ok(new ResponseContent("Success!", "RESPONSE_TYPE: CONFIRMATION"));
 	}
 
-	// TODO: Change to ResponseEntity<?>
 	@DeleteMapping("/book")
-	public Object delete(@RequestBody @NonNull BigInteger bookId) {
+	public ResponseEntity<?> delete(@RequestBody @NonNull BigInteger bookId) {
 		if (bookRepository.findById(bookId.intValue()).isPresent()) {
-			return new ResponseContent("Deletion Unsuccessful, Try Again.", "Confirmation");
+			return ResponseEntity
+					.badRequest()
+					.body(new ResponseContent("Deletion Unsuccessful, Try Again.", "Confirmation"));
 		}
 
 		bookRepository.deleteById(bookId.intValue());
-		return new ResponseContent("Deletion Successful", "Confirmation");
+		return ResponseEntity
+				.ok()
+				.body(new ResponseContent("Deletion Successful", "Confirmation"));
 	}
 }

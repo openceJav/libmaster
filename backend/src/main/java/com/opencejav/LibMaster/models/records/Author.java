@@ -1,6 +1,9 @@
 package com.opencejav.LibMaster.models.records;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -21,19 +24,20 @@ import java.util.UUID;
         "created_by", "last_modified_by",
         "version"
 })
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record Author(
     @Id
     @MongoId(targetType = FieldType.INT64)
     BigInteger authorId,
 
     @Field(targetType = FieldType.STRING)
-    String authorName,
+    @NotNull String authorName,
 
     @Field(targetType = FieldType.STRING)
-    String authorEmail,
+    @NotNull String authorEmail,
 
     @Field(targetType = FieldType.STRING)
-    String authorAddress,
+    @NotNull String authorAddress,
 
     //region Auditing Fields
     @CreatedDate

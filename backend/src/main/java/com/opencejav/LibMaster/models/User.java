@@ -1,6 +1,8 @@
 package com.opencejav.LibMaster.models;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.opencejav.LibMaster.enums.UserType;
 import com.opencejav.LibMaster.utils.generators.IntegerIdGenerator;
 import lombok.EqualsAndHashCode;
@@ -32,6 +34,7 @@ import java.util.UUID;
 		"created_on", "last_modified",
 		"created_by", "last_modified_by",
 		"version"})
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class User {
 	@Id
 	@MongoId(targetType = FieldType.INT64)

@@ -1,24 +1,41 @@
 package com.opencejav.LibMaster.models.records;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.opencejav.LibMaster.enums.CategoryType;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.math.BigInteger;
 
+@Document(collection = "Authors")
+@JsonPropertyOrder({
+        "category_id", "category_name",
+        "category_type",
+
+        // Auditing Fields
+        "created_on", "last_modified",
+        "created_by", "last_modified_by",
+        "version"
+})
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record Category(
     @Id
+    @MongoId(targetType = FieldType.INT64)
     BigInteger categoryId,
 
-    @NotNull
     @Field(targetType = FieldType.STRING)
-    String categoryName,
+    @NotNull String categoryName,
 
-    @NotNull
     @Field(targetType = FieldType.STRING)
-    CategoryType categoryType
-) {
+    @NotNull CategoryType categoryType
 
-}
+    //region Auditing Fields
+    // TODO: Add Auditing Fields
+    //endregion
+) { }

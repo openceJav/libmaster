@@ -1,27 +1,49 @@
 package com.opencejav.LibMaster.models.records;
 
-import lombok.NonNull;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-public class Publisher {
-    // TODO: Implement Publisher Record Logic
-    private String publisherName;
-    private String publisherAddress;
-    private String publisherCity;
-    private String publisherState;
-    private String publisherCountry;
+import java.math.BigInteger;
 
-    public Publisher (
-            String publisherName,
-            String publisherAddress,
-            String publisherCity,
-            String publisherState,
-            String publisherCountry
-    ) {
-        this.publisherName = publisherName;
-        this.publisherAddress = publisherAddress;
-        this.publisherCity = publisherCity;
-        this.publisherState = publisherState;
-        this.publisherCountry = publisherCountry;
-    }
+@Document(collection = "Authors")
+@JsonPropertyOrder({
+        "author_id", "author_name",
+        "author_email", "author_address",
 
-}
+        // Auditing Fields
+        "created_on", "last_modified",
+        "created_by", "last_modified_by",
+        "version"
+})
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+public record Publisher (
+        @Id
+        @MongoId(targetType = FieldType.INT64)
+        BigInteger publisherId,
+
+        @Field(targetType = FieldType.STRING)
+        @NotNull String publisherName,
+
+        @Field(targetType = FieldType.STRING)
+        @NotNull String publisherAddress,
+
+        @Field(targetType = FieldType.STRING)
+        @NotNull String publisherCity,
+
+        @Field(targetType = FieldType.STRING)
+        @NotNull String publisherState,
+
+        @Field(targetType = FieldType.STRING)
+        @NotNull String publisherCountry
+
+        //region Auditing Fields
+        // TODO: Add Auditing Fields
+        //endregion
+) { }
