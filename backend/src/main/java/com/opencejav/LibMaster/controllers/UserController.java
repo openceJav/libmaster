@@ -3,9 +3,13 @@ package com.opencejav.LibMaster.controllers;
 import com.opencejav.LibMaster.models.User;
 import com.opencejav.LibMaster.repository.UserRepository;
 import com.opencejav.LibMaster.utils.ResponseContent;
+import com.opencejav.LibMaster.utils.Response;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.opencejav.LibMaster.authentication.JwtService;
 
 import java.util.Optional;
 
@@ -25,11 +29,16 @@ public class UserController {
     }
 
     @GetMapping("user")
-    public ResponseEntity<?> findAllUsers(@RequestBody String username) {
-        return ResponseEntity
-                .ok()
-                .body(userRepository.findAll());
-    }
+    // public ResponseEntity<?> findAllUsers(@RequestBody String username) {
+    //     return ResponseEntity
+    //             .ok()
+    //             .body(userRepository.findAll());
+    public Object find(@RequestBody String username, HttpServletResponse reponse) {
+        System.out.println(repo.findById(username));
+        Cookie cookie = new Cookie("JWT", JwtService.generateToken(username));
+        reponse.addCookie(cookie);
+        return new Response("Success!", "Confirmation");
+}
 
     // TODO: Implement ResponseEntity<?>
     @PutMapping("user")
