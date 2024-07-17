@@ -1,18 +1,14 @@
 package com.opencejav.LibMaster.models;
 
-// Records Imported from records package
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.opencejav.LibMaster.models.records.Author;
 import com.opencejav.LibMaster.models.records.Category;
 import com.opencejav.LibMaster.models.records.Publisher;
 
-
-import com.opencejav.LibMaster.utils.rules.CheckIntegerRule;
-import com.opencejav.LibMaster.utils.rules.CheckStringRule;
-import com.opencejav.LibMaster.utils.validation.Validator;
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
@@ -20,23 +16,71 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-@Document(collection = "books")
-@JsonPropertyOrder({"book_id", "book_isbn", "book_title", "book_authors", "book_publisher", "book_category", "book_quantity"})
+@Document(collection = "Books")
+@JsonPropertyOrder({
+        "book_id", "book_isbn",
+        "book_title", "book_authors",
+        "book_publisher", "book_category",
+        "book_quantity",
+
+        // Auditing Fields
+        "created_on", "last_modified",
+        "created_by", "last_modified_by",
+        "version"
+})
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Book implements Serializable {
     @Id
+    @MongoId(targetType = FieldType.INT64)
     private BigInteger bookId;
+
+    @Field(targetType = FieldType.STRING)
     private final String bookISBN;
+
+    @Field(targetType = FieldType.STRING)
     private final String bookTitle;
+
+    @Field(targetType = FieldType.ARRAY)
     private final List<Author> bookAuthors;
+
+    @Field(targetType = FieldType.OBJECT_ID)
     private final Publisher bookPublisher;
+
+    @Field(targetType = FieldType.OBJECT_ID)
     private final Category bookCategory;
+
+    @Field(targetType = FieldType.INT32)
     private final int bookQuantity;
+
+    //region Auditing Fields
+    @CreatedDate
+    @Field(targetType = FieldType.DATE_TIME)
+    private OffsetDateTime createdOn;
+
+    @LastModifiedDate
+    @Field(targetType = FieldType.DATE_TIME)
+    private OffsetDateTime lastModified;
+
+    @CreatedBy
+    @Field(targetType = FieldType.OBJECT_ID)
+    private UUID createdBy;
+
+    @LastModifiedBy
+    @Field(targetType = FieldType.OBJECT_ID)
+    private UUID lastModifiedBy;
+    //endregion
+
+    @Version
+    @Field(targetType = FieldType.INT32)
+    private Integer version;
 
     private Book(BookBuilder builder) {
         this.bookId = builder.bookId;
