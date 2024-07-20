@@ -9,7 +9,7 @@ const readAll = async (body) => {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Credentials': 'true'
             },
-            mode: "cors",
+            mode: 'cors',
             body: JSON.stringify(body),
             credentials: 'include' 
         });
